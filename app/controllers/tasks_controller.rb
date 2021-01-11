@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+
   def index
     @tasks = Task.all
   end
@@ -31,10 +32,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      flash[:success] = 'タスクが編集されました'
+      flash[:success] = 'タスクは正常に更新されました'
       redirect_to @task
     else
-    flash.now[:danger] = 'タスクが編集されませんでした'
+    flash.now[:danger] = 'タスクは更新されませんでした'
     render :new
     end
   end
@@ -43,8 +44,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
 
-    flash[:success] = 'タスクが削除されました'
-    redirect_to tasks_path
+    flash[:success] = 'タスクは正常に削除されました'
+    redirect_to tasks_url
   end
 end
 
